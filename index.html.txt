@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Portal de Estudos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fa;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    header {
+      background: #004aad;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    nav {
+      margin: 20px 0;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #004aad;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      margin-top: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      border: none;
+      background: #004aad;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #003580;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📘 Portal de Estudos</h1>
+    <p>Aprenda de forma divertida com resumos e quizzes!</p>
+  </header>
+
+  <nav>
+    <a href="#matematica">Matemática</a>
+    <a href="#geografia">Geografia</a>
+    <a href="#historia">História</a>
+  </nav>
+
+  <!-- Matemática -->
+  <section id="matematica">
+    <h2>📐 Matemática</h2>
+    <p><strong>Resumo:</strong> A porcentagem é uma forma de representar uma fração de 100.</p>
+    <div class="quiz">
+      <p><strong>Pergunta:</strong> Quanto é 50% de 200?</p>
+      <input type="radio" name="q1" value="50"> 50 <br>
+      <input type="radio" name="q1" value="100"> 100 <br>
+      <input type="radio" name="q1" value="150"> 150 <br>
+      <input type="radio" name="q1" value="200"> 200 <br>
+      <button onclick="corrigir('q1','100','resultado1')">Responder</button>
+      <div class="result" id="resultado1"></div>
+    </div>
+  </section>
+
+  <!-- Geografia -->
+  <section id="geografia">
+    <h2>🌍 Geografia</h2>
+    <p><strong>Resumo:</strong> O planeta Terra é dividido em continentes e oceanos.</p>
+    <div class="quiz">
+      <p><strong>Pergunta:</strong> Qual é o maior país do mundo em território?</p>
+      <input type="radio" name="q2" value="Brasil"> Brasil <br>
+      <input type="radio" name="q2" value="Rússia"> Rússia <br>
+      <input type="radio" name="q2" value="China"> China <br>
+      <input type="radio" name="q2" value="EUA"> Estados Unidos <br>
+      <button onclick="corrigir('q2','Rússia','resultado2')">Responder</button>
+      <div class="result" id="resultado2"></div>
+    </div>
+  </section>
+
+  <!-- História -->
+  <section id="historia">
+    <h2>🏛️ História</h2>
+    <p><strong>Resumo:</strong> A Independência do Brasil foi proclamada em 1822.</p>
+    <div class="quiz">
+      <p><strong>Pergunta:</strong> Em que ano o Brasil proclamou a independência?</p>
+      <input type="radio" name="q3" value="1808"> 1808 <br>
+      <input type="radio" name="q3" value="1822"> 1822 <br>
+      <input type="radio" name="q3" value="1889"> 1889 <br>
+      <input type="radio" name="q3" value="1500"> 1500 <br>
+      <button onclick="corrigir('q3','1822','resultado3')">Responder</button>
+      <div class="result" id="resultado3"></div>
+    </div>
+  </section>
+
+  <script>
+    function corrigir(nomeQuestao, respostaCerta, idResultado) {
+      let opcoes = document.getElementsByName(nomeQuestao);
+      let resposta = "";
+      for (let i = 0; i < opcoes.length; i++) {
+        if (opcoes[i].checked) {
+          resposta = opcoes[i].value;
+        }
+      }
+      let resultado = document.getElementById(idResultado);
+      if (resposta === respostaCerta) {
+        resultado.textContent = "✅ Correto!";
+        resultado.style.color = "green";
+      } else if (resposta === "") {
+        resultado.textContent = "⚠️ Escolha uma opção!";
+        resultado.style.color = "orange";
+      } else {
+        resultado.textContent = "❌ Errado! A resposta certa é " + respostaCerta + ".";
+        resultado.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

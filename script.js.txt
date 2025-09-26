@@ -1,0 +1,20 @@
+function corrigir(nomeQuestao, respostaCerta, idResultado) {
+  let opcoes = document.getElementsByName(nomeQuestao);
+  let resposta = "";
+  for (let i = 0; i < opcoes.length; i++) {
+    if (opcoes[i].checked) {
+      resposta = opcoes[i].value;
+    }
+  }
+  let resultado = document.getElementById(idResultado);
+  if (resposta === respostaCerta) {
+    resultado.textContent = "✅ Correto!";
+    resultado.style.color = "green";
+  } else if (resposta === "") {
+    resultado.textContent = "⚠️ Escolha uma opção!";
+    resultado.style.color = "orange";
+  } else {
+    resultado.textContent = "❌ Errado! A resposta certa é " + respostaCerta + ".";
+    resultado.style.color = "red";
+  }
+}
